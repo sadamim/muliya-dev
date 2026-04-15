@@ -6,10 +6,12 @@ export function HeroParallaxBanner() {
   const images = useMemo(
     () => [
       "/images/banners1.png",
+       "/images/banners7.png",
       "/images/banners2.png",
       "/images/banners3.png",
       "/images/banners4.png",
       "/images/banners5.png",
+      
     ],
     [],
   );

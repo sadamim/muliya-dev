@@ -116,7 +116,7 @@ export function Header() {
           </Link>
 
           <div className="hidden lg:flex items-center gap-10 text-sm text-gray-700">
-            <Link
+            {/* <Link
               href="/policy/gold-scheme"
               className="flex items-center gap-2 hover:text-[#E92247] transition-colors"
             >
@@ -129,7 +129,7 @@ export function Header() {
             >
               <Video className="w-4 h-4 text-[#E92247]" />
               <span>Scheme Payments</span>
-            </Link>
+            </Link> */}
           </div>
 
           {/* Search */}

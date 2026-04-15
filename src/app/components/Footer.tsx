@@ -9,7 +9,7 @@ import { Button } from "./ui/button";
 export function Footer() {
   const [logoError, setLogoError] = useState(false);
   return (
-  <footer className="bg-[#0F4C5C] text-gray-300">
+    <footer className="bg-[#0F4C5C] text-gray-300">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -17,7 +17,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img
-                src="/images/Logo-1.svg"
+                src="/images/Muliya_White_Logo.png"
                 alt="Muliya Gold & Diamonds"
                 loading="eager"
                 className="h-10 w-auto object-contain max-w-[180px]"
@@ -117,9 +117,9 @@ export function Footer() {
               <li className="flex items-start gap-2">
                 <MapPin className="w-5 h-5 text-[#fff] flex-shrink-0 mt-0.5" />
                 <span>MANIPAL CENTRE,
-DICKENSON ROAD,
-BENGALURU
-Karnataka — 574 201</span>
+                  DICKENSON ROAD,
+                  BENGALURU
+                  Karnataka <br /> 574 201</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-5 h-5 text-[#FFF] flex-shrink-0" />
@@ -132,7 +132,7 @@ Karnataka — 574 201</span>
             </ul>
 
             {/* Newsletter */}
-           
+
           </div>
         </div>
       </div>
@@ -142,13 +142,7 @@ Karnataka — 574 201</span>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
             <p>&copy; 2026 Muliya Gold & Diamonds. All rights reserved.</p>
-            <div className="flex gap-4">
-              <span>BIS Hallmarked</span>
-              <span>•</span>
-              <span>100% Certified</span>
-              <span>•</span>
-              <span>Secure Payment</span>
-            </div>
+
           </div>
         </div>
       </div>

@@ -255,9 +255,9 @@ export function Home() {
       "/images/video1.mp4",
       "/images/video2.mp4",
       "/images/video3.mp4",
-      "/images/video4.mp4",
-      "/images/video5.mp4",
-      "/images/video6.mp4",
+      // "/images/video4.mp4",
+      // "/images/video5.mp4",
+      // "/images/video6.mp4",
     ],
     [],
   );
@@ -437,7 +437,7 @@ export function Home() {
       </section>
 
       {/* Quote */}
-      <section className="py-8 bg-white">
+      {/* <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-6">
             <div className="w-14 h-14 rounded-full bg-amber-100 flex items-center justify-center text-[#E92247]">
@@ -452,7 +452,7 @@ export function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Story block */}
       <section className="py-8 bg-gradient-to-r from-[#E92247]/10 to-white">
@@ -974,7 +974,7 @@ export function Home() {
       </section>
 
       {/* Journal */}
-      <section className="py-8 bg-white">
+      {/* <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between gap-6 flex-wrap">
             <div>
@@ -1040,7 +1040,7 @@ export function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
     
 
