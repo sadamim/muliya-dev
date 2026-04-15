@@ -9,6 +9,7 @@ import { Card, CardContent } from "../components/ui/card";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { HeroParallaxBanner } from "@/app/components/HeroParallaxBanner";
 import AboutSection from "../components/AboutSection";
+import VideoGallery from "@/app/components/VideoCarousel";
 
 const collections = [
   {
@@ -249,6 +250,26 @@ function GemFallback(props: { className?: string }) {
 export function Home() {
   const identityRef = React.useRef<HTMLElement | null>(null);
   const [identityStep, setIdentityStep] = React.useState(0);
+   const reelSources = React.useMemo(
+    () => [
+      "/images/video1.mp4",
+      "/images/video2.mp4",
+      "/images/video3.mp4",
+      "/images/video4.mp4",
+      "/images/video5.mp4",
+      "/images/video6.mp4",
+    ],
+    [],
+  );
+  const [activeReel, setActiveReel] = React.useState(0);
+
+  const prevReel = React.useCallback(() => {
+    setActiveReel((i) => (i - 1 + reelSources.length) % reelSources.length);
+  }, [reelSources.length]);
+
+  const nextReel = React.useCallback(() => {
+    setActiveReel((i) => (i + 1) % reelSources.length);
+  }, [reelSources.length]);
 
   React.useEffect(() => {
     const el = identityRef.current;
@@ -658,8 +679,100 @@ export function Home() {
         </div>
       </section>
 
-      {/* Video Gallery - Horizontal Scroll */}
       <section className="py-8 bg-white">
+        <div className="px-4 sm:px-6 lg:px-8">
+          <div className="relative mx-auto max-w-6xl">
+            <div className="relative h-[520px] sm:h-[560px] md:h-[600px] flex items-center justify-center">
+              <button
+                type="button"
+                onClick={prevReel}
+                aria-label="Previous reel"
+                className="absolute left-0 sm:left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 h-11 w-11 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-gray-700 hover:text-gray-900"
+              >
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              <button
+                type="button"
+                onClick={nextReel}
+                aria-label="Next reel"
+                className="absolute right-0 sm:right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 h-11 w-11 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-gray-700 hover:text-gray-900"
+              >
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+
+              {reelSources.map((src, idx) => {
+                const total = reelSources.length;
+                const offset = ((idx - activeReel) % total + total) % total;
+                const rel = offset === 0 ? 0 : offset <= total / 2 ? offset : offset - total;
+
+                const isActive = rel === 0;
+                const isNeighbor = Math.abs(rel) === 1;
+
+                let translateX = 0;
+                let scale = 1;
+                let opacity = 1;
+                let z = 10;
+
+                if (isActive) {
+                  translateX = 0;
+                  scale = 1;
+                  opacity = 1;
+                  z = 30;
+                } else if (isNeighbor) {
+                  translateX = rel * 150;
+                  scale = 0.86;
+                  opacity = 1;
+                  z = 20;
+                } else {
+                  translateX = rel * 210;
+                  scale = 0.78;
+                  opacity = 0;
+                  z = 10;
+                }
+
+                return (
+                  <div
+                    key={src}
+                    className="absolute top-1/2 left-1/2"
+                    style={{
+                      transform: `translate(-50%, -50%) translateX(${translateX}px) scale(${scale})`,
+                      opacity,
+                      zIndex: z,
+                      filter: isActive ? "none" : "saturate(1.05) contrast(1.02)",
+                      transition: "transform 400ms ease, opacity 400ms ease",
+                    }}
+                  >
+                    <div
+                      className={
+                        "relative aspect-[9/16] w-[240px] sm:w-[270px] md:w-[300px] overflow-hidden bg-transparent shadow-xl " +
+                        (isActive ? "rounded-3xl" : "rounded-2xl")
+                      }
+                    >
+                      <video
+                        key={isActive ? src : `${src}-inactive`}
+                        src={src}
+                        autoPlay={isActive}
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Gallery - Horizontal Scroll */}
+      {/* <section className="py-8 bg-white">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex overflow-x-auto gap-4 pb-4 hide-scrollbar snap-x snap-mandatory">
             {[
@@ -692,50 +805,10 @@ export function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+      {/* <VideoGallery /> */}
 
-      {/* Faces */}
-      <section className="py-8 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between gap-6 flex-wrap">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-serif text-gray-900">Faces of Muliya</h2>
-              <p className="text-gray-600 mt-3 max-w-2xl">
-                A flagship campaign spotlighting local talent and stories beyond jewellery.
-              </p>
-            </div>
-            <Button variant="outline" asChild>
-              <Link href="/blog">View More</Link>
-            </Button>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              "https://images.unsplash.com/photo-1520975916090-3105956dac38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=900",
-              "https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=900",
-              "https://images.unsplash.com/photo-1520975916090-3105956dac38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=900",
-            ].map((src, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: idx * 0.06 }}
-              >
-                <Card className="rounded-2xl overflow-hidden border-amber-100">
-                  <div className="relative h-64">
-                    <ImageWithFallback src={src} alt="Face of Muliya" className="w-full h-full object-cover" />
-                  </div>
-                  <CardContent className="p-5">
-                    <p className="font-semibold text-gray-900">Featured Talent</p>
-                    <p className="text-sm text-gray-600 mt-1">Community Story</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+    
 
       {/* Testimonials - BlueStone Style */}
       <section className="py-8 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
