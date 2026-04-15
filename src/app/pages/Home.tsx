@@ -460,11 +460,10 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-4">
-                Our story begins in 1944
+                Our Story Begins In 1944
               </h2>
               <p className="text-gray-700 text-lg leading-relaxed">
-                Founded with integrity and built on transparency, Muliya has grown into a trusted name - connecting
-                craftsmanship with customer-first service across generations.
+               Founded On Integrity And Built With Transparency, Muliya Has Grown Into A Trusted Name—Connecting Craftsmanship With Customer-First Service Across Generations.
               </p>
               <div className="mt-8">
                 <Button variant="outline" size="lg" asChild>
@@ -487,52 +486,91 @@ export function Home() {
       </section>
 
       {/* Collections */}
-      <section className="py-8 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-10">
-            Collections
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { name: "Amuliya Diamonds", desc: "Exquisite diamond craftsmanship", image: "/images/amuliya.png", slug: "amuliya" },
-              { name: "Mahathi Antique Collection", desc: "Timeless antique designs", image: "/images/mahathi.png", slug: "mahathi" },
-              { name: "Pouranik Collection", desc: "Heritage-inspired pieces", image: "/images/pournik.png", slug: "pouranik" },
-              { name: "Muliya Silveriya", desc: "Premium silver jewellery", image: "/images/silveriya.png", slug: "silveriya" },
-              { name: "Nithya 18k Jewellery Series", desc: "Everyday elegance in 18k gold", image: "/images/nithya.png", slug: "nithya" },
-              { name: "Mangalsutra Collection", desc: "Sacred bonds, beautiful designs", image: "/images/mangalsutra.png", slug: "mangalsutra" },
-            ].map((col, idx) => (
-              <motion.div
-                key={col.slug}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: idx * 0.05 }}
-              >
-                <Link href={`/collections/${col.slug}`}>
-                  <div className="group cursor-pointer">
-                    <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-purple-100 to-purple-50">
-                      <ImageWithFallback
-                        src={col.image}
-                        alt={col.name}
-                        className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="mt-3 flex items-start justify-between">
-                      <div>
-                        <h3 className="text-xl font-serif text-gray-900 flex items-center gap-1 group-hover:text-gray-700 transition-colors">
-                          {col.name}
-                          <ArrowRight className="w-4 h-4 -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                        </h3>
-                        {col.desc && <p className="text-sm text-gray-600 mt-1">{col.desc}</p>}
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+     <section className="py-8 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-10 text-center">
+      Collections
+    </h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+      
+      {[
+  { 
+    name: "Amuliya Diamonds", 
+    desc: "Exquisite Diamond Craftsmanship", 
+    image: "/images/amuliya.png", 
+    slug: "amuliya" 
+  },
+  { 
+    name: "Mahathi Antique Collection", 
+    desc: "Timeless Antique Designs", 
+    image: "/images/mahathi.png", 
+    slug: "mahathi" 
+  },
+  { 
+    name: "Pouranik Collection", 
+    desc: "Heritage-Inspired Pieces", 
+    image: "/images/pournik.png", 
+    slug: "pouranik" 
+  },
+  { 
+    name: "Muliya Silveriya", 
+    desc: "Premium Silver Jewellery", 
+    image: "/images/silveriya.png", 
+    slug: "silveriya" 
+  },
+  { 
+    name: "Nithya 18k Jewellery Series", 
+    desc: "Everyday Elegance In 18k Gold", 
+    image: "/images/nithya.png", 
+    slug: "nithya" 
+  },
+  { 
+    name: "Mangalsutra Collection", 
+    desc: "Sacred Bonds, Beautiful Designs", 
+    image: "/images/mangalsutra.png", 
+    slug: "mangalsutra" 
+  }
+].map((col, idx) => (
+        <motion.div
+          key={col.slug}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, delay: idx * 0.05 }}
+        >
+          <Link href={`/collections/${col.slug}`}>
+            <div className="group cursor-pointer text-center">
+
+              <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-purple-100 to-purple-50">
+                <ImageWithFallback
+                  src={col.image}
+                  alt={col.name}
+                  className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+
+              <div className="mt-3">
+                <h3 className="text-xl font-serif text-gray-900 flex items-center justify-center gap-1 group-hover:text-gray-700 transition-colors">
+                  {col.name}
+                  <ArrowRight className="w-4 h-4 -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </h3>
+
+                {col.desc && (
+                  <p className="text-sm text-gray-600 mt-1">
+                    {col.desc}
+                  </p>
+                )}
+              </div>
+
+            </div>
+          </Link>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Gold Scheme Section */}
       <section className="py-12 bg-gradient-to-br from-amber-50 via-white to-amber-50">
@@ -550,8 +588,7 @@ export function Home() {
                 Easy Jewellery Buying Plan
               </h2>
               <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                Start saving monthly and buy your dream jewellery when you're ready. 
-                Get bonus benefits on completion and enjoy flexible payment options.
+                Start Saving Monthly And Buy Your Dream Jewellery When You're Ready. Get Bonus Benefits On Completion And Enjoy Flexible Payment Options.
               </p>
 
               {/* Stats */}
@@ -818,7 +855,7 @@ export function Home() {
               Muliya & Me
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Real experiences from customers who trust Muliya for craftsmanship and service.
+             Real Experiences From Customers Who Trust Muliya For Craftsmanship And Service.
             </p>
           </div>
         </div>
@@ -938,40 +975,65 @@ export function Home() {
       </section>
 
       {/* Details */}
-      <section className="py-8 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-serif text-gray-900">
-              Our spark is in the details
-            </h2>
-            <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
-              Trust-enhancing tools and an experience built around clarity, quality, and care.
-            </p>
-          </div>
+   <section className="relative py-20 bg-gradient-to-b from-[#fffaf5] to-white overflow-hidden">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {detailCards.map((c, idx) => (
-              <motion.div
-                key={c.id}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: idx * 0.04 }}
-              >
-                <Card className="rounded-2xl border-amber-100 h-full">
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 rounded-full bg-amber-100 text-[#E92247] flex items-center justify-center mb-4">
-                      <c.icon className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{c.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{c.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+    {/* Heading */}
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-serif text-gray-900 tracking-wide">
+        Our Spark Is In The Details
+      </h2>
+      <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-[#E92247] to-transparent mx-auto mt-4" />
+      <p className="text-gray-600 mt-5 max-w-2xl mx-auto text-lg leading-relaxed">
+        Trust-enhancing tools and an experience built around clarity, quality, and care.
+      </p>
+    </div>
+
+    {/* Cards */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      {detailCards.map((c, idx) => (
+        <motion.div
+          key={c.id}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: idx * 0.08 }}
+        >
+          <div className="relative group h-full rounded-3xl p-[1px] bg-gradient-to-br from-amber-200 via-white to-amber-100 hover:from-[#E92247] hover:to-amber-200 transition duration-500">
+
+            {/* Inner Card */}
+            <div className="h-full bg-white/80 backdrop-blur-xl rounded-3xl p-8 flex flex-col justify-between shadow-md group-hover:shadow-2xl transition-all duration-500">
+
+              {/* Icon */}
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-100 to-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 group-hover:shadow-lg transition">
+                <c.icon className="w-7 h-7 text-[#E92247]" />
+              </div>
+
+              {/* Content */}
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-[#E92247] transition">
+                  {c.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {c.description}
+                </p>
+              </div>
+
+              {/* Bottom Accent */}
+              <div className="mt-6 w-10 h-[2px] bg-[#E92247] group-hover:w-16 transition-all duration-300" />
+            </div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+
+  {/* Background Glow Effect */}
+  <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <div className="absolute w-96 h-96 bg-[#E92247]/10 rounded-full blur-3xl top-10 left-10"></div>
+    <div className="absolute w-96 h-96 bg-amber-200/20 rounded-full blur-3xl bottom-10 right-10"></div>
+  </div>
+</section>
 
       {/* Journal */}
       {/* <section className="py-8 bg-white">
